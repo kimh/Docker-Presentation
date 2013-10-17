@@ -48,15 +48,17 @@
 
 				<section>
 					<h2>What is Docker?</h2>
+                    <br/>
 					<p>
-                        In a word: Docker is a wrapper of Linux container
+                        In a single word: Docker is a wrapper of Linux container
 					</p>
 				</section>
 
                 <section>
                     <h2>With more words...</h2>
+                    <br/>
                     <p>
-                        Docker is a wrapper of Linux container backed by the AUFS
+                        Docker is a wrapper of Linux container powered by the AUFS
                     </p>
                 </section>
 
@@ -70,9 +72,12 @@
                         <p>
                             It is a one of virtualization methods. With LXC, you can run multiple Linux machines inside a host Linux machine.
                         </p>
-                        <p>
-                            Your question: you can do this with VMware, Xen, and VirtualBox. Why bothered with LXC?
-                        </p>
+                        <br/>
+                        <br/>
+                        <h3>Your question</h3>
+                            <p>
+                            You can do this with VMware, Xen, and VirtualBox. Why bothered with LXC?
+                            </p>
                     </section>
                     <section>
                         <h2>
@@ -80,6 +85,7 @@
                         </h2>
 
                         <p>What I mean by lightweight is...</p>
+                        <br/>
                         <ul>
                             <li>You can boot/stop container lightning fast</li>
                             <li>You can run much more than containers at the same time than VM</li>
@@ -101,7 +107,7 @@
                     </section>
                     <section>
                         <p>
-                        AUFS (Another UnionFS) is a filesystem that allows you to mount different filesystem into one.
+                        AUFS (Another UnionFS) is a filesystem that allows you to mount multiple different filesystems into one.
                         </p>
                     </section>
                     <section>
@@ -111,55 +117,59 @@
                 </section>
 
                 <section>
-                    <h2>Docker Basic</h2>
                     <section>
-                        <h2>
-                            Running container
-                        </h2>
-                        <h3>Pulling image</h3>
-                            <pre><code data-trim>
-                                #TODO
-                        (def lazy-fib
-                        (concat
-                        [0 1]
-                        ((fn rfib [a b]
-                        (lazy-cons (+ a b) (rfib b (+ a b)))) 0 1)))
+                        <h2>Docker Basics</h2>
+                    </section>
+                    <section>
+                        <h2>Running container</h2>
+                        <br/><br/>
+                        <p>Pulling image</p>
+                        <pre><code data-trim>
+                            $ docker pull docker-demo
                         </code></pre>
-                        <h3>Running container from image</h3>
-                             <pre><code data-trim>
-                                #TODO
-                                (def lazy-fib
-                                (concat
-                                [0 1]
-                                ((fn rfib [a b]
-                                (lazy-cons (+ a b) (rfib b (+ a b)))) 0 1)))
-                            </code></pre>
+                        <br/><br/>
+                        <p>Running container and execute ls -la</p>
+                        <pre><code data-trim>
+                            $ docker run docker-demo /bin/bash -c "ls -la"
+                        </code></pre>
                     </section>
                     <section>
                         <h2>
                             Saving container to image
                         </h2>
-                        <h3>Docker doesn't keep its state</h3>
-                        TODO: create file, and exit, and show file is not saved
-                        <h3>Commit to image</h3>
-                        #TODO: show commit command
+                        <br/><br/>
+                        <p>Docker doesn't keep its state unless you commit</p>
+                        <br/><br/>
+                        <pre><code data-trim>
+                            $ docker commit ContainerID docker-demo
+                        </code></pre>
                     </section>
                     <section>
                         <h2>
                             Creating your own image with Dockerfile
                         </h2>
-                        <h3>
+                        <p>
                             Dockerfile: a file where you write instructions that tells Docker how you want to make your image
-                        </h3>
-                        #TODO: show Docker file
-                        #TODO: run docker container
+                        </p>
+                        <br/><br/>
+                        <p>Example of Dockerfile</p>
+                        <pre>
+FROM      ubuntu
+MAINTAINER Kim, Hirokuni
+
+# make sure the package repository is up to date
+RUN apt-get update
+RUN apt-get ruby</pre>
                     </section>
                     <section>
                         <h2>
                             Pushing to repository
                         </h2>
-                        <a href="https://index.docker.io/u/kimh/">Kim's Docker repo</a>
-                        #TODO: show docker push command
+                        To: <a href="https://index.docker.io/u/kimh/">Kim's Docker repo</a>
+                        <br/><br/>
+                       <pre><code data-trim>
+                           $ docker push docker-demo
+                       </code></pre>
                     </section>
                 </section>
 
